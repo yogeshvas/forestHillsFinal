@@ -1,0 +1,111 @@
+/* Spinner.css */
+@keyframes flicker {
+  0%,
+  100% {
+    background: transparent;
+  }
+  50% {
+    background: #3f512f; /* Updated color */
+  }
+}
+
+@keyframes neon {
+  0% {
+    text-shadow: none;
+  }
+  50% {
+    text-shadow: rgba(255, 255, 255, 0.8) 0 0 8px;
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.loader {
+  padding: 0.5em;
+  width: 5.5em;
+  height: 9.5em;
+  margin: 100px auto;
+  background: #3f512f; /* Updated color */
+  position: relative;
+  box-shadow: inset 0 0 20px rgba(34, 34, 34, 0.9);
+  border-radius: 4px;
+}
+
+.loader .hotel-sign {
+  padding: 0.25em 0;
+  position: absolute;
+  right: -1.5em;
+  width: 1.3em;
+  content: " ";
+  text-align: center;
+  background: #3f512f; /* Updated color */
+  font-family: sans-serif;
+  font-weight: 700;
+  color: white; /* Updated color */
+  border-radius: 4px;
+  box-shadow: inset 0 0 10px rgba(34, 34, 34, 0.9);
+  animation: neon 3s infinite ease;
+}
+
+.loader .hotel-sign span {
+  line-height: 1;
+}
+
+.loader .window {
+  background: rgba(255, 255, 255, 0.8); /* Updated opacity */
+  width: 0.5em;
+  height: 1em;
+  float: left;
+  margin: 0 0.5em 0.5em 0;
+  border-radius: 2px;
+  animation: flicker 1s infinite ease;
+}
+
+.loader .window:nth-of-type(5n) {
+  margin: 0 0 0.5em 0;
+}
+
+@for $i from 1 through 5 {
+  .loader .window:nth-child(#{$i}) {
+    animation-delay: ($i / 2) + s;
+    animation-duration: ($i / 2) + s;
+  }
+}
+
+@for $i from 5 through 10 {
+  .loader .window:nth-child(#{$i}) {
+    animation-delay: ($i / 4) + s;
+    animation-duration: ($i / 4) + s;
+  }
+}
+
+@for $i from 10 through 20 {
+  .loader .window:nth-child(#{$i}) {
+    animation-delay: ($i / 10) + s;
+    animation-duration: ($i / 10) + s;
+  }
+}
+
+@for $i from 20 through 30 {
+  .loader .window:nth-child(#{$i}) {
+    animation-delay: ($i / 15) + s;
+    animation-duration: ($i / 12) + s;
+  }
+}
+
+.loader .door {
+  background: white;
+  position: absolute;
+  bottom: 0;
+  width: 1em;
+  height: 1.5em;
+  left: 50%;
+  margin-left: -0.5em;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
